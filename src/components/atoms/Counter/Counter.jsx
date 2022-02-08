@@ -1,7 +1,7 @@
-const Counter = () => {
-  return (
-    <h1>counter</h1>
-  )
+import "./Counter.css"
+
+const Counter = (props) => {
+    return <h1 className="Title">Completados 3 de 5</h1>
 }
 
 export { Counter }

@@ -1,11 +1,9 @@
-import { Counter } from "./atoms/Counter"
+import { Home } from "./organisms/Home"
 
 const App = (props) => {
-  return (
-    <>
-      <Counter />
-    </>
-  )
+    return (
+        <Home />
+    )
 }
 
 export { App }

@@ -1,6 +1,20 @@
-const List = () => {
+import { Item } from "../../atoms/Item"
+
+import "./List.css"
+
+const List = (props) => {
     return (
-        <h1>list</h1>
+        <section>
+            <ul>
+                {props.todos.map((todo) => (
+                    <Item
+                        key={todo.text}
+                        text={todo.text}
+                        completed={todo.completed}
+                    />
+                ))}
+            </ul>
+        </section>
     )
 }
 
