@@ -1,3 +1,5 @@
+import { useState } from "preact/hooks"
+
 import { Counter } from "../../atoms/Counter"
 import { Search } from "../../atoms/Search"
 import { Button } from "../../atoms/Button"
@@ -6,20 +8,34 @@ import { List } from "../../molecules/List"
 import "./Home.css"
 
 const Home = () => {
-    const todos = [
-        { text: "Cortar cebolla", completed: true },
-        { text: "Tomar el cursso de intro a React", completed: false },
-        { text: "Llorar con la llorona", completed: false },
-        { text: "LALALALAA", completed: false },
+    let todosArr = [
+        { text: "Cortar cebolla", id: 1,completed: true },
+        { text: "Tomar el cursso de intro a React", id: 2,completed: false },
+        { text: "Llorar con la llorona", id: 3,completed: false },
+        { text: "LALALALAA", id: 4,completed: false },
     ]
+
+    const [todos, setTodos] = useState(todosArr)
+    const [searchValue, setSearchValue] = useState("")
+
+    const completedTodos = todos.filter(todo => !!todo.completed).length
+    const totalTodos = todos.length
+    const filteredTodos = todos.filter(todo =>
+        todo.text.toLowerCase().includes(searchValue.toLowerCase())
+    )
+
+    let searchedTodos = []
+
+    if (!searchValue.length >= 1) searchedTodos = todos
+    else searchedTodos = filteredTodos
 
     return (
         <>
-            <Counter />
+            <Counter completed={completedTodos} total={totalTodos} />
 
-            <Search />
+            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
 
-            <List todos={todos} />
+            <List todos={searchedTodos} setTodos={setTodos} />
 
             <Button />
         </>
