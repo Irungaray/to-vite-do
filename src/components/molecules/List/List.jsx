@@ -6,17 +6,23 @@ import "./List.css"
 
 const List = (props) => {
 
+    const saveTodos = (newTodos) => {
+        let stringified = JSON.stringify(newTodos)
+        localStorage.setItem(props.storageKey, stringified)
+        props.setTodos(newTodos)
+    }
+
     const toggleComplete = (id) => {
         let newTodos = [...props.todos]
         let selectedTodo = props.todos.findIndex(todo => todo.id === id)
 
         newTodos[selectedTodo].completed = !newTodos[selectedTodo].completed;
 
-        props.setTodos(newTodos)
+        saveTodos(newTodos)
     }
 
     const handleDelete = (id) => {
-        props.setTodos(
+        saveTodos(
             props.todos.filter(todo => todo.id != id)
         )
     }
@@ -54,7 +60,8 @@ List.propTypes = {
             completed: PropTypes.bool.isRequired
         }
     )),
-    setTodos: PropTypes.func
+    setTodos: PropTypes.func,
+    storageKey: PropTypes.string.isRequired
 }
 
 export { List }

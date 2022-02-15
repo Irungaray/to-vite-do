@@ -3,12 +3,8 @@ import PropTypes from 'prop-types'
 import "./Item.css"
 
 const Item = (props) => {
-
-
-
-
     return (
-        <li className="Item" onClick={props.onClick}>
+        <li className="Item">
             <span
                 className={`Icon Icon-check ${props.completed && "Icon-check--active"}`}
                 onClick={props.handleComplete}
@@ -31,7 +27,10 @@ const Item = (props) => {
 }
 
 Item.propTypes = {
-    
+    handleComplete: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired,
+    completed: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired,
 }
 
 export { Item }
