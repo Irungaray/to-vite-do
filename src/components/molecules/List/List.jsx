@@ -6,23 +6,17 @@ import "./List.css"
 
 const List = (props) => {
 
-    const saveTodos = (newTodos) => {
-        let stringified = JSON.stringify(newTodos)
-        localStorage.setItem(props.storageKey, stringified)
-        props.setTodos(newTodos)
-    }
-
     const toggleComplete = (id) => {
         let newTodos = [...props.todos]
         let selectedTodo = props.todos.findIndex(todo => todo.id === id)
 
         newTodos[selectedTodo].completed = !newTodos[selectedTodo].completed;
 
-        saveTodos(newTodos)
+        props.setTodos(newTodos)
     }
 
     const handleDelete = (id) => {
-        saveTodos(
+        props.setTodos(
             props.todos.filter(todo => todo.id != id)
         )
     }
@@ -61,7 +55,6 @@ List.propTypes = {
         }
     )),
     setTodos: PropTypes.func,
-    storageKey: PropTypes.string.isRequired
 }
 
 export { List }

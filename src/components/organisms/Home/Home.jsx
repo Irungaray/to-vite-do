@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks"
+import { useLocalStorage } from "../../../hooks/useLocalStorage"
 
 import { Counter } from "../../atoms/Counter"
 import { Search } from "../../atoms/Search"
@@ -15,21 +16,8 @@ import "./Home.css"
 // ]
 
 const Home = () => {
-    let storageKey = "TODOS_V1"
-    let parsedTodos;
+    const [todos, setTodos] = useLocalStorage("TODOS_V1", "[]")
 
-    const lsTodos = localStorage.getItem(storageKey)
-    console.log(lsTodos);
-
-    if (!lsTodos) {
-        localStorage.setItem(storageKey, "[]")
-        parsedTodos = []
-    }
-    else {
-        parsedTodos = JSON.parse(lsTodos)
-    }
-
-    const [todos, setTodos] = useState(parsedTodos)
     const [searchValue, setSearchValue] = useState("")
 
     const completedTodos = todos.filter(todo => !!todo.completed).length
@@ -49,7 +37,7 @@ const Home = () => {
 
             <Search searchValue={searchValue} setSearchValue={setSearchValue} />
 
-            <List todos={searchedTodos} setTodos={setTodos} storageKey={storageKey} />
+            <List todos={searchedTodos} setTodos={setTodos} />
 
             <Button />
         </>
