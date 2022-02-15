@@ -1,8 +1,12 @@
-import PropTypes from 'prop-types'
+import { useContext } from "preact/hooks"
+
+import { TodoContext } from "../../../context/TodoContext";
 
 import "./Search.css"
 
-const Search = ({searchValue, setSearchValue}) => {
+const Search = () => {
+
+    const { searchValue, setSearchValue } = useContext(TodoContext)
 
     const handleSearch = (e) => {
         setSearchValue(e.target.value)
@@ -16,11 +20,6 @@ const Search = ({searchValue, setSearchValue}) => {
             placeholder="Search..."
         />
     )
-}
-
-Search.propTypes = {
-    searchValue: PropTypes.string,
-    setSearchValue: PropTypes.func
 }
 
 export { Search }

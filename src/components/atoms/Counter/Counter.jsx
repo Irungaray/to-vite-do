@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types'
+import { useContext } from "preact/hooks"
+
+import { TodoContext } from "../../../context/TodoContext";
+
 import "./Counter.css"
 
 const Counter = (props) => {
-    const completed = props.todos.filter(todo => !!todo.completed).length
-    const total = props.todos.length
+
+    const { completed, total } = useContext(TodoContext)
 
     return (
         <h1 className="Title">
@@ -14,16 +17,6 @@ const Counter = (props) => {
             }
         </h1>
     )
-}
-
-Counter.propTypes = {
-    todos: PropTypes.arrayOf(
-        PropTypes.shape({
-            text: PropTypes.string.isRequired,
-            id: PropTypes.number.isRequired,
-            completed: PropTypes.bool.isRequired
-        }
-    ))
 }
 
 export { Counter }
