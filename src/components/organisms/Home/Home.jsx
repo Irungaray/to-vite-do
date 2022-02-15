@@ -14,7 +14,7 @@ import "./Home.css"
 
 const Home = () => {
 
-    const { openModal, setOpenModal } = useContext(TodoContext)
+    const { openModal } = useContext(TodoContext)
 
     return (
         <>
@@ -26,7 +26,7 @@ const Home = () => {
 
             <Button  />
 
-            { !!openModal /* WTF? */ && <Portal component={<Modal />} /> }
+            { !!openModal && <Portal component={<Modal />} /> /* WTF? */ }
         </>
     )
 }

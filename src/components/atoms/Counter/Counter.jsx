@@ -11,9 +11,9 @@ const Counter = (props) => {
     return (
         <h1 className="Title">
             {
-                total > 1
-                    ? `Completados ${completed} de ${total}`
-                    : "Aún no hay ToDos."
+                total >= 1
+                    ? `Completed ${completed} out of ${total}`
+                    : "No ToDos on sight :D"
             }
         </h1>
     )

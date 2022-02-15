@@ -10,7 +10,7 @@ const useLocalStorage = (key, value) => {
 
     const [items, setItems] = useState(parsedItem)
 
-    const saveTodos = (newItem) => {
+    const saveTodos = newItem => {
         let stringified = JSON.stringify(newItem)
         localStorage.setItem(key, stringified)
         setItems(newItem)

@@ -20,7 +20,7 @@ const TodoProvider = (props) => {
     let searchedTodos = todos
     if (searchValue.length >= 1) searchedTodos = filteredTodos
 
-    const toggleComplete = (id) => {
+    const toggleComplete = id => {
         let newTodos = [...todos]
         let selectedTodo = todos.findIndex(todo => todo.id === id)
 
@@ -29,13 +29,13 @@ const TodoProvider = (props) => {
         setTodos(newTodos)
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = id => {
         setTodos(
             todos.filter(todo => todo.id != id)
         )
     }
 
-    const handleAdd = (text) => {
+    const handleAdd = text => {
         let newTodos = [...todos]
 
         newTodos.push({

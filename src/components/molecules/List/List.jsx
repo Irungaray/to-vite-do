@@ -18,8 +18,8 @@ const List = () => {
                         key={todo.id}
                         text={todo.text}
                         completed={todo.completed}
-                        handleComplete={(() => toggleComplete(todo.id))}
-                        handleDelete={(() => handleDelete(todo.id))}
+                        handleComplete={ _ => toggleComplete(todo.id) }
+                        handleDelete={ _ => handleDelete(todo.id) }
                     />
                 ))}
             </ul>

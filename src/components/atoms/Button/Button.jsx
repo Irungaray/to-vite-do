@@ -8,7 +8,7 @@ const Button = () => {
 
     const { setOpenModal } = useContext(TodoContext)
 
-    const handleClick = (msg) => {
+    const handleClick = msg => {
         setOpenModal(prevState => !prevState)
     }
 

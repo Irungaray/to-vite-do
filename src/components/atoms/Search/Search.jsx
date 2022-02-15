@@ -8,7 +8,7 @@ const Search = () => {
 
     const { searchValue, setSearchValue } = useContext(TodoContext)
 
-    const handleSearch = (e) => {
+    const handleSearch = e => {
         setSearchValue(e.target.value)
     }
 
