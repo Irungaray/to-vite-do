@@ -9,6 +9,7 @@ const TodoProvider = (props) => {
 
     const [todos, setTodos] = useLocalStorage("TODOS_V1", "[]")
     const [searchValue, setSearchValue] = useState("")
+    const [openModal, setOpenModal] = useState(false)
 
     // Counter scope
     const completed = todos.filter(todo => !!todo.completed).length
@@ -34,6 +35,18 @@ const TodoProvider = (props) => {
         )
     }
 
+    const handleAdd = (text) => {
+        let newTodos = [...todos]
+
+        newTodos.push({
+            id: todos.length + 1,
+            completed: false,
+            text
+        })
+
+        setTodos(newTodos)
+    }
+
     const values = {
         // Counter
         completed,
@@ -45,6 +58,10 @@ const TodoProvider = (props) => {
         searchedTodos,
         toggleComplete,
         handleDelete,
+        // Modal
+        openModal,
+        setOpenModal,
+        handleAdd
     }
 
     return (
