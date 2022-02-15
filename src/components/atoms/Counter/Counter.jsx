@@ -1,13 +1,29 @@
 import PropTypes from 'prop-types'
 import "./Counter.css"
 
-const Counter = ({ completed, total}) => {
-    return <h1 className="Title">Completados {completed} de {total}</h1>
+const Counter = (props) => {
+    const completed = props.todos.filter(todo => !!todo.completed).length
+    const total = props.todos.length
+
+    return (
+        <h1 className="Title">
+            {
+                total > 1
+                    ? `Completados ${completed} de ${total}`
+                    : "Aún no hay ToDos."
+            }
+        </h1>
+    )
 }
 
 Counter.propTypes = {
-    completed: PropTypes.number,
-    total: PropTypes.number
+    todos: PropTypes.arrayOf(
+        PropTypes.shape({
+            text: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            completed: PropTypes.bool.isRequired
+        }
+    ))
 }
 
 export { Counter }

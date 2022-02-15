@@ -5,7 +5,6 @@ import "./Search.css"
 const Search = ({searchValue, setSearchValue}) => {
 
     const handleSearch = (e) => {
-        console.log(e.target.value)
         setSearchValue(e.target.value)
     }
 
