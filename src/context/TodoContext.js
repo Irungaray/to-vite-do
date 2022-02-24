@@ -7,7 +7,7 @@ const TodoContext = createContext()
 
 const TodoProvider = (props) => {
 
-    const [todos, setTodos] = useLocalStorage("TODOS_V1", [])
+    const [todos, setTodos, syncTodos] = useLocalStorage("TODOS_V1", [])
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
 
@@ -62,7 +62,9 @@ const TodoProvider = (props) => {
         // Modal
         openModal,
         setOpenModal,
-        handleAdd
+        handleAdd,
+        // Sync tabs
+        syncTodos
     }
 
     return (

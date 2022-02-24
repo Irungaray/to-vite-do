@@ -2,6 +2,7 @@ import { useState, useEffect } from "preact/hooks"
 
 const useLocalStorage = (key, value) => {
     const [items, setItems] = useState(value)
+    const [synced, setSynced] = useState(true)
 
     useEffect(() => {
         const storedItem = localStorage.getItem(key)
@@ -12,7 +13,8 @@ const useLocalStorage = (key, value) => {
         else parsedItem = JSON.parse(storedItem)
 
         setItems(parsedItem)
-    }, [])
+        setSynced(true)
+    }, [synced])
 
 
     const saveItems = newItem => {
@@ -21,7 +23,11 @@ const useLocalStorage = (key, value) => {
         setItems(newItem)
     }
 
-    return [ items, saveItems ]
+    const syncItems = _ => {
+        setSynced(false)
+    }
+
+    return [ items, saveItems, syncItems ]
 }
 
 export { useLocalStorage }

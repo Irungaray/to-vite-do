@@ -10,11 +10,13 @@ import { List } from "../../molecules/List"
 import { Portal } from "../Portal/Portal"
 import { Modal } from "../../molecules/Modal";
 
+import { AlertWithStorageListener } from "../../../hocs/Alert";
+
 import "./Home.css"
 
 const Home = () => {
 
-    const { openModal } = useContext(TodoContext)
+    const { openModal, syncTodos  } = useContext(TodoContext)
 
     return (
         <>
@@ -27,8 +29,11 @@ const Home = () => {
             <Button  />
 
             { !!openModal && <Portal component={<Modal />} /> /* WTF? */ }
+
+            <AlertWithStorageListener syncTodos={syncTodos} />
         </>
     )
+
 }
 
 export { Home }
