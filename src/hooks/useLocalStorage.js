@@ -7,7 +7,7 @@ const useLocalStorage = (key, value) => {
     useEffect(() => {
         const storedItem = localStorage.getItem(key)
         let strfiedVal = JSON.stringify(value)
-        let parsedItem;
+        let parsedItem
 
         if (!storedItem) localStorage.setItem(key, strfiedVal), parsedItem = value
         else parsedItem = JSON.parse(storedItem)

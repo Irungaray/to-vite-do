@@ -31,6 +31,7 @@ const Modal = () => {
                 placeholder="Add ToDo..."
                 value={value}
                 onInput={handleInput}
+                autofocus
             />
 
             <div className="buttonContainer">

@@ -6,7 +6,7 @@ const withStorageListener = (WrappedComponent) => {
 
         window.addEventListener('storage', (change) => {
             if (change.key == 'TODOS_V1') {
-                console.log("cambios en todos v1")
+                console.log("Changes on { key } ")
                 setStorageChange(true)
             }
         })
