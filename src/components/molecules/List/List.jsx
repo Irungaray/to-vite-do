@@ -1,6 +1,6 @@
 import { useContext } from "preact/hooks"
 
-import { TodoContext } from "../../../context/TodoContext";
+import { TodoContext } from "../../../context/TodoContext"
 
 import { Item } from "../../atoms/Item"
 

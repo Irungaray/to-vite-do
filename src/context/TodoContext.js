@@ -6,14 +6,12 @@ import { useLocalStorage } from "../hooks/useLocalStorage"
 const TodoContext = createContext()
 
 const TodoProvider = (props) => {
-
     const [todos, setTodos, syncTodos] = useLocalStorage("TODOS_V1", [])
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
 
     // Counter scope
     const completed = todos.filter(todo => !!todo.completed).length
-    console.log(localStorage);
     const total = todos.length
 
     // List scope
@@ -25,7 +23,7 @@ const TodoProvider = (props) => {
         let newTodos = [...todos]
         let selectedTodo = todos.findIndex(todo => todo.id === id)
 
-        newTodos[selectedTodo].completed = !newTodos[selectedTodo].completed;
+        newTodos[selectedTodo].completed = !newTodos[selectedTodo].completed
 
         setTodos(newTodos)
     }
