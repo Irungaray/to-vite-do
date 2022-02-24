@@ -1,22 +1,27 @@
-import { useState } from "preact/hooks"
+import { useState, useEffect } from "preact/hooks"
 
 const useLocalStorage = (key, value) => {
-    const storedItem = localStorage.getItem(key)
-    let val = JSON.stringify(value)
-    let parsedItem;
+    const [items, setItems] = useState(value)
 
-    if (!storedItem) localStorage.setItem(key, val), parsedItem = val
-    else parsedItem = JSON.parse(storedItem)
+    useEffect(() => {
+        const storedItem = localStorage.getItem(key)
+        let strfiedVal = JSON.stringify(value)
+        let parsedItem;
 
-    const [items, setItems] = useState(parsedItem)
+        if (!storedItem) localStorage.setItem(key, strfiedVal), parsedItem = value
+        else parsedItem = JSON.parse(storedItem)
 
-    const saveTodos = newItem => {
+        setItems(parsedItem)
+    }, [])
+
+
+    const saveItems = newItem => {
         let stringified = JSON.stringify(newItem)
         localStorage.setItem(key, stringified)
         setItems(newItem)
     }
 
-    return [ items, saveTodos ]
+    return [ items, saveItems ]
 }
 
 export { useLocalStorage }

@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "preact": "^10.5.15",
@@ -12,6 +14,8 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.1.5",
+    "gh-pages": "^3.2.3",
     "vite": "^2.7.2"
-  }
+  },
+  "homepage": "https://irungaray.github.io/to-vite-do"
 }

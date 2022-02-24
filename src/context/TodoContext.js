@@ -7,12 +7,13 @@ const TodoContext = createContext()
 
 const TodoProvider = (props) => {
 
-    const [todos, setTodos] = useLocalStorage("TODOS_V1", "[]")
+    const [todos, setTodos] = useLocalStorage("TODOS_V1", [])
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
 
     // Counter scope
     const completed = todos.filter(todo => !!todo.completed).length
+    console.log(localStorage);
     const total = todos.length
 
     // List scope
