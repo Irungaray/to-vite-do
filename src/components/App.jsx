@@ -1,36 +1,26 @@
 import { useState } from "preact/hooks"
 
 import { TodoProvider } from "../context/TodoContext"
-import { useLocalStorage } from "../hooks/useLocalStorage"
+import { useCrumbs } from "../hooks/useCrumbs"
 
-import { Breadcrumbs } from "./molecules/Breadcrumbs/Breadcrumbs"
+import { Breadcrumbs } from "./molecules/Breadcrumbs"
 import { Home } from "./organisms/Home"
-
 
 const App = () => {
 
-    const [selectedCrumb, setSelectedCrumb] = useState("General")
-    const [crumbs, setCrumbs] = useLocalStorage("crumbs",  ["General"])
+    const [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb ] = useCrumbs()
 
     const [val, setVal] = useState("")
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        setCrumbs([
-            ...crumbs,
-            val
-        ])
-    }
-
     return (
         <TodoProvider pointer={selectedCrumb}>
+            <input
+                type="text"
+                onInput={ (e) => setVal(e.target.value) }
+            />
 
-            <form onSubmit={handleSubmit}>
-                <input type="text" onInput={ (e) => setVal(e.target.value) } />
+            <button onClick={() => saveCrumb(val)}>sub</button>
 
-                <button type="submit">sub</button>
-            </form>
 
             <Breadcrumbs
                 crumbs={crumbs}

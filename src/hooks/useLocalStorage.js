@@ -4,8 +4,6 @@ const useLocalStorage = (key, value) => {
     const [items, setItems] = useState(value)
     const [synced, setSynced] = useState(true)
 
-    // console.log("key:", key, localStorage.getItem(key))
-
     useEffect(() => {
         const storedItem = localStorage.getItem(key)
         let strfiedVal = JSON.stringify(value)

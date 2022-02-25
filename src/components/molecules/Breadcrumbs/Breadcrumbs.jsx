@@ -1,10 +1,6 @@
-import { useState } from "preact/hooks"
-
 import "./Breadcrumbs.css"
 
-
 const Breadcrumbs = (props) => {
-
     return (
         <div className="container">
             {props.crumbs.map((crumb, index) => (
