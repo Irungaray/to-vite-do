@@ -11,7 +11,7 @@ const List = () => {
     const { searchedTodos, toggleComplete, handleDelete } = useContext(TodoContext)
 
     return (
-        <section>
+        <section className="List">
             <ul>
                 {searchedTodos.map((todo) => (
                     <Item

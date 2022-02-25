@@ -3,7 +3,7 @@ import { useContext } from "preact/hooks"
 import { TodoContext } from "../../../context/TodoContext"
 
 import { Counter } from "../../atoms/Counter"
-import { Search } from "../../atoms/Search"
+import { Search } from "../../molecules/Search"
 import { List } from "../../molecules/List"
 
 import { Portal } from "../Portal/Portal"

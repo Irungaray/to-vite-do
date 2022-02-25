@@ -2,9 +2,9 @@ import { useContext, useState } from "preact/hooks"
 
 import { TodoContext } from "../../../context/TodoContext"
 
-import { AddButton } from "../AddButton"
-import { SearchButton } from "../SearchButton"
-import { Input } from "../Input"
+import { AddButton } from "../../atoms/AddButton"
+import { SearchButton } from "../../atoms/SearchButton"
+import { Input } from "../../atoms/Input"
 
 import "./Search.css"
 
