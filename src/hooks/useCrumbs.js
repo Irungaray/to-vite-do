@@ -10,9 +10,21 @@ const useCrumbs = () => {
             ...crumbs,
             val
         ])
+
+        setSelectedCrumb(val)
     }
 
-    return [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb ]
+    const deleteCrumb = (target) => {
+        setCrumbs(
+            crumbs.filter(crumb => crumb != target)
+        )
+
+        localStorage.removeItem(target)
+
+        setSelectedCrumb(crumbs[0])
+    }
+
+    return [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb ]
 }
 
 export { useCrumbs }

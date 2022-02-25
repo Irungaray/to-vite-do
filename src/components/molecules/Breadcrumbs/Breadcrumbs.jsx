@@ -1,20 +1,28 @@
 import "./Breadcrumbs.css"
 
-const Breadcrumbs = (props) => {
+const Breadcrumbs = ({ crumbs, selectedCrumb, setSelectedCrumb, deleteCrumb }) => {
     return (
         <div className="container">
-            {props.crumbs.map((crumb, index) => (
-                <h2
-                    key={index}
-                    className={
-                        props.selectedCrumb === crumb
-                            ? "breadcrumb active"
-                            : "breadcrumb"
+            {crumbs.map((crumb, index) => (
+                <>
+                    {selectedCrumb === crumb && crumbs.length > 1 &&
+                        <span onClick={() => deleteCrumb(selectedCrumb)}>
+                            X
+                        </span>
                     }
-                    onClick={() => props.setSelectedCrumb(crumb)}
-                >
-                    {crumb}
-                </h2>
+
+                    <h2
+                        key={index}
+                        className={
+                            selectedCrumb === crumb
+                                ? "breadcrumb active"
+                                : "breadcrumb"
+                        }
+                        onClick={() => setSelectedCrumb(crumb)}
+                    >
+                        [ {crumb} ]
+                    </h2>
+                </>
             ))}
         </div>
     )

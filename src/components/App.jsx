@@ -8,7 +8,7 @@ import { Home } from "./organisms/Home"
 
 const App = () => {
 
-    const [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb ] = useCrumbs()
+    const [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb ] = useCrumbs()
 
     const [val, setVal] = useState("")
 
@@ -26,6 +26,7 @@ const App = () => {
                 crumbs={crumbs}
                 selectedCrumb={selectedCrumb}
                 setSelectedCrumb={setSelectedCrumb}
+                deleteCrumb={deleteCrumb}
             />
 
             <Home />
