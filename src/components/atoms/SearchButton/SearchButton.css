@@ -1,14 +1,14 @@
-.AddButton {
+.SearchButton {
     border: none;
     background: none;
     cursor: pointer;
     transform: rotate(0);
-    transition: 0.3s ease;
+    /* transition: 0.3s ease; */
     /* position: fixed;
     top: 8px;
     right: 24px; */
 }
 
-.AddButton:hover {
-    transform: rotate(180deg);
-}
+/* .SearchButton:hover { */
+    /* transform: rotate(180deg); */
+/* } */

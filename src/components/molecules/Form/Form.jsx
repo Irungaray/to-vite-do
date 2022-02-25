@@ -10,7 +10,10 @@ const Form = (props) => {
 
     return (
         <div className="AddCrumbForm">
-            <Input onInput={ (e) => setVal(e.target.value) } />
+            <Input
+                onInput={ (e) => setVal(e.target.value) }
+                placeholder="Add crumb..."
+            />
 
             <Button onClick={() => props.saveCrumb(val)}/>
         </div>

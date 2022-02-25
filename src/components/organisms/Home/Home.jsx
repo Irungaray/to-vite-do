@@ -5,7 +5,6 @@ import { TodoContext } from "../../../context/TodoContext"
 import { Counter } from "../../atoms/Counter"
 import { Search } from "../../atoms/Search"
 import { List } from "../../molecules/List"
-import { AddButton } from "../../atoms/AddButton"
 
 import { Portal } from "../Portal/Portal"
 import { Modal } from "../../molecules/Modal"
@@ -25,8 +24,6 @@ const Home = () => {
             <Search />
 
             <List />
-
-            <AddButton onClick={() => setOpenModal(prevState => !prevState)} />
 
             { !!openModal && <Portal component={<Modal />} /> /* WTF? */ }
 
