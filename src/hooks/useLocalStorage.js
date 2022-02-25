@@ -4,6 +4,8 @@ const useLocalStorage = (key, value) => {
     const [items, setItems] = useState(value)
     const [synced, setSynced] = useState(true)
 
+    // console.log("key:", key, localStorage.getItem(key))
+
     useEffect(() => {
         const storedItem = localStorage.getItem(key)
         let strfiedVal = JSON.stringify(value)
@@ -12,9 +14,11 @@ const useLocalStorage = (key, value) => {
         if (!storedItem) localStorage.setItem(key, strfiedVal), parsedItem = value
         else parsedItem = JSON.parse(storedItem)
 
+        // console.log(storedItem);
+
         setItems(parsedItem)
         setSynced(true)
-    }, [synced])
+    }, [synced, key])
 
 
     const saveItems = newItem => {

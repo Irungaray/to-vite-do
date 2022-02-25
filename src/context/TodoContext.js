@@ -6,7 +6,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage"
 const TodoContext = createContext()
 
 const TodoProvider = (props) => {
-    const [todos, setTodos, syncTodos] = useLocalStorage("TODOS_V1", [])
+    const [todos, setTodos, syncTodos] = useLocalStorage(props.pointer, [])
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
 

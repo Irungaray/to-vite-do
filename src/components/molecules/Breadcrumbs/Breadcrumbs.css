@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+    border: 1px solid red;
+}
+
+.breadcrumb {
+    padding-right: 16px;
+    padding-left: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.active {
+    /* color: theme.palette.primary.main; */
+    padding-bottom: '4px';
+    border-bottom: 3px solid red;
+}
