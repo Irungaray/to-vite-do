@@ -1,33 +1,28 @@
-import { useState } from "preact/hooks"
 
 import { TodoProvider } from "../context/TodoContext"
 import { useCrumbs } from "../hooks/useCrumbs"
 
+
 import { Breadcrumbs } from "./molecules/Breadcrumbs"
 import { Home } from "./organisms/Home"
+import { Form } from "./molecules/Form/Form"
 
 const App = () => {
 
-    const [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb ] = useCrumbs()
+    const [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb, showForm, setShowForm ] = useCrumbs()
 
-    const [val, setVal] = useState("")
 
     return (
         <TodoProvider pointer={selectedCrumb}>
-            <input
-                type="text"
-                onInput={ (e) => setVal(e.target.value) }
-            />
-
-            <button onClick={() => saveCrumb(val)}>sub</button>
-
-
             <Breadcrumbs
                 crumbs={crumbs}
                 selectedCrumb={selectedCrumb}
                 setSelectedCrumb={setSelectedCrumb}
                 deleteCrumb={deleteCrumb}
+                setShowForm={setShowForm}
             />
+
+            {showForm && <Form saveCrumb={saveCrumb} /> }
 
             <Home />
         </TodoProvider>
