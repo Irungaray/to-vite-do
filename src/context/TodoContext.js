@@ -38,7 +38,7 @@ const TodoProvider = (props) => {
         let newTodos = [...todos]
 
         newTodos.push({
-            id: todos.length + 1,
+            id: Date.now(),
             completed: false,
             text
         })
