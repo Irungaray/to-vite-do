@@ -23,6 +23,8 @@ const Modal = () => {
         handleClose()
     }
 
+    const handleDisable = value.length < 5 || value == "crumbs"
+
     return (
         <form className="Form" onSubmit={handleSubmit}>
             <label>Add new To Do</label>
@@ -39,7 +41,7 @@ const Modal = () => {
                     Cancel
                 </button>
 
-                <button type="submit" className="add">
+                <button type="submit" className="add" disabled={handleDisable}>
                     Add
                 </button>
             </div>

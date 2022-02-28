@@ -68,6 +68,12 @@ textarea:focus {
     box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
 }
 
+.add:disabled {
+    background: grey;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
 .cancel {
     background: rgb(226, 68, 100);
     box-shadow: 0px 5px 25px rgba(104, 51, 69, 0.5);

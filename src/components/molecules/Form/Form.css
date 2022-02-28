@@ -1,7 +1,12 @@
 .AddCrumbForm {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
-    flex-direction: row;
     gap: 30px;
+}
+
+.err {
+    color: crimson;
+    text-align: center;
+    font-weight: bold;
 }
