@@ -1,4 +1,5 @@
-import { useState } from "preact/hooks"
+import { useKeyBinding } from "../../../hooks/useKeyBinding"
+
 import { AddButton } from "../../atoms/AddButton"
 
 import "./Breadcrumbs.css"
@@ -10,6 +11,11 @@ const Breadcrumbs = ({
     deleteCrumb,
     setShowForm
 }) => {
+
+    let keys = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    keys.forEach(key => useKeyBinding(key, () => setSelectedCrumb(crumbs[key - 1])))
+
     return (
             <div className="container">
                 {crumbs.map((crumb, index) => (
