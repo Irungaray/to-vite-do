@@ -1,4 +1,4 @@
-import { useKeyBinding } from "../../../hooks/useKeyBinding"
+import { useKeyBindings } from "../../../hooks/useKeyBindings"
 
 import { AddButton } from "../../atoms/AddButton"
 
@@ -14,7 +14,7 @@ const Breadcrumbs = ({
 
     let keys = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-    keys.forEach(key => useKeyBinding(key, () => setSelectedCrumb(crumbs[key - 1])))
+    keys.forEach(key => useKeyBindings(key, () => setSelectedCrumb(crumbs[key - 1])))
 
     return (
             <div className="container">
