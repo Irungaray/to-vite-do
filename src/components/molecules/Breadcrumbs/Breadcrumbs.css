@@ -4,7 +4,13 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
+}
+
+.crumbs {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .del {
@@ -12,9 +18,10 @@
 }
 
 .crumbs:hover .del {
-    margin-right: 8px;
+    /* margin-right: 8px; */
+    margin-top: 22px;
+    /* text-align: center; */
     font-size: 20px;
-    text-align: center;
     cursor: pointer;
     display: inline-block;
 }
@@ -29,7 +36,7 @@
 }
 
 .active {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     border-bottom: 3px solid #A270FF;
 
 }

@@ -13,6 +13,12 @@ const Breadcrumbs = ({
             <div className="container">
                 {crumbs.map((crumb, index) => (
                     <section className="crumbs">
+                        {selectedCrumb === crumb && selectedCrumb != "Main" && (
+                            <h2 onClick={() => deleteCrumb(selectedCrumb)} className="del">
+                                X
+                            </h2>
+                        )}
+
                         <h2
                             key={index}
                             className={
@@ -22,11 +28,7 @@ const Breadcrumbs = ({
                             }
                             onClick={() => setSelectedCrumb(crumb)}
                         >
-                        {selectedCrumb === crumb && crumbs.length > 1 && (
-                            <span onClick={() => deleteCrumb(selectedCrumb)} className="del">
-                                X
-                            </span>
-                        )}
+
 
                             {crumb}
 

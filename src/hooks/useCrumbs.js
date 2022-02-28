@@ -17,13 +17,15 @@ const useCrumbs = () => {
     }
 
     const deleteCrumb = (target) => {
+        localStorage.removeItem(target)
+
         setCrumbs(
             crumbs.filter(crumb => crumb != target)
         )
 
-        localStorage.removeItem(target)
+        let prev = crumbs[crumbs.indexOf(target) - 1]
 
-        setSelectedCrumb(crumbs[0])
+        setSelectedCrumb(prev)
     }
 
     return [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb, showForm, setShowForm ]
