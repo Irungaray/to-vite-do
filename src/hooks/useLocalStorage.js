@@ -12,8 +12,6 @@ const useLocalStorage = (key, value) => {
         if (!storedItem) localStorage.setItem(key, strfiedVal), parsedItem = value
         else parsedItem = JSON.parse(storedItem)
 
-        // console.log(storedItem);
-
         setItems(parsedItem)
         setSynced(true)
     }, [synced, key])
@@ -29,7 +27,7 @@ const useLocalStorage = (key, value) => {
         setSynced(false)
     }
 
-    return [ items, saveItems, syncItems ]
+    return [ items, saveItems, syncItems, synced ]
 }
 
 export { useLocalStorage }

@@ -1,6 +1,7 @@
 import { useContext } from "preact/hooks"
 
 import { TodoContext } from "../../../context/TodoContext"
+import { useCrumbs } from "../../../hooks/useCrumbs"
 
 import { Counter } from "../../atoms/Counter"
 import { Search } from "../../molecules/Search"
@@ -15,7 +16,9 @@ import "./Home.css"
 
 const Home = () => {
 
-    const { openModal, setOpenModal, syncTodos  } = useContext(TodoContext)
+    const { openModal, syncTodos } = useContext(TodoContext)
+
+    const [ , selectedCrumb, , , , , , syncCrumbs ] = useCrumbs()
 
     return (
         <>
@@ -27,7 +30,7 @@ const Home = () => {
 
             { !!openModal && <Portal component={<Modal />} /> /* WTF? */ }
 
-            <AlertWithStorageListener syncTodos={syncTodos} />
+            <AlertWithStorageListener pointer={selectedCrumb} syncTodos={syncTodos} syncCrumbs={syncCrumbs} />
         </>
     )
 

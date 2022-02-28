@@ -2,7 +2,7 @@ import { useState } from "preact/hooks"
 import { useLocalStorage } from "./useLocalStorage"
 
 const useCrumbs = () => {
-    const [crumbs, setCrumbs] = useLocalStorage("crumbs", ["Main"])
+    const [crumbs, setCrumbs, syncCrumbs, synced] = useLocalStorage("crumbs", ["Main"])
     const [selectedCrumb, setSelectedCrumb] = useLocalStorage("selectedCrumb", "Main")
     const [showForm, setShowForm] = useState(false)
 
@@ -28,7 +28,9 @@ const useCrumbs = () => {
         setSelectedCrumb(prev)
     }
 
-    return [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb, showForm, setShowForm ]
+    return [
+        crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb, showForm, setShowForm, syncCrumbs
+    ]
 }
 
 export { useCrumbs }
