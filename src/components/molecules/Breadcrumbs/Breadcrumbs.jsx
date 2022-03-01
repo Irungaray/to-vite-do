@@ -19,7 +19,7 @@ const Breadcrumbs = ({
     let keys = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     keys.forEach(key => {
-        if ( key > crumbs.length ) return
+        if ( key > crumbs.length) return
 
         useKeyBindings(key, () => setSelectedCrumb(crumbs[key - 1]))
     })

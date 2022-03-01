@@ -1,16 +1,20 @@
-import { useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 
 const withStorageListener = (WrappedComponent) => {
     return (props) => {
         const [storageChange, setStorageChange] = useState(false)
         const [changesOn, setChangesOn] = useState("")
 
-        window.addEventListener('storage', (change) => {
-            if (change.key == props.pointer || change.key == "crumbs") {
-                setChangesOn(change.key)
+        const { addEventListener, removeEventListener, location } = window
+
+        const handler = (e) => {
+            if (e.key == props.pointer || e.key == "crumbs") {
+                setChangesOn(e.key)
                 setStorageChange(true)
             }
-        })
+        }
+
+        addEventListener('storage', handler)
 
         const handleSyncTodos = () => {
             setStorageChange(false)
@@ -18,9 +22,13 @@ const withStorageListener = (WrappedComponent) => {
         }
 
         const handleSyncCrumbs = () => {
-            window.location.reload()
+            location.reload()
             // props.syncCrumbs()
         }
+
+        useEffect(() => {
+            return () => removeEventListener('storage', handler)
+        })
 
         return (
             <WrappedComponent
