@@ -1,16 +1,17 @@
-import { useCrumbs } from "./useCrumbs";
+import {useEffect} from "preact/hooks"
 
 const useKeyBindings = (key, cb) => {
-    const [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb, showForm, setShowForm ] = useCrumbs()
+    const { addEventListener, removeEventListener } = window
 
-    const { addEventListener, removeEventListener } = document
+    const handler = (e) => {
+        if (e.key == key) cb()
+    }
 
-    addEventListener('keyup', (event) => {
-        if (event.key == key) cb()
+    addEventListener('keyup', handler);
 
-        return () => removeEventListener("keydown", cb)
-    });
+    useEffect(() => {
+        return () => removeEventListener("keyup", handler)
+    })
 }
 
 export { useKeyBindings }
-

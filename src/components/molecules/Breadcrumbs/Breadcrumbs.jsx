@@ -12,9 +12,19 @@ const Breadcrumbs = ({
     setShowForm
 }) => {
 
+    const handleShowForm = () => {
+        setShowForm(prevState => !prevState)
+    }
+
     let keys = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-    keys.forEach(key => useKeyBindings(key, () => setSelectedCrumb(crumbs[key - 1])))
+    keys.forEach(key => {
+        if ( key > crumbs.length ) return
+
+        useKeyBindings(key, () => setSelectedCrumb(crumbs[key - 1]))
+    })
+
+    useKeyBindings("A", () => handleShowForm())
 
     return (
             <div className="container">
@@ -46,7 +56,7 @@ const Breadcrumbs = ({
                     </section>
                 ))}
 
-                <AddButton onClick={() => setShowForm(prevState => !prevState)} />
+                <AddButton onClick={handleShowForm} />
             </div>
     )
 }
