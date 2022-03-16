@@ -24,7 +24,9 @@ const Breadcrumbs = ({
         useKeyBindings(key, () => setSelectedCrumb(crumbs[key - 1]))
     })
 
-    useKeyBindings("A", () => handleShowForm())
+    useKeyBindings("C", () => handleShowForm())
+    useKeyBindings("ArrowRight", () => setSelectedCrumb(crumbs[crumbs.indexOf(selectedCrumb) + 1]))
+    useKeyBindings("ArrowLeft", () => setSelectedCrumb(crumbs[crumbs.indexOf(selectedCrumb) - 1]))
 
     return (
             <div className="container">

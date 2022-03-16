@@ -1,6 +1,7 @@
-import { useState, useContext } from "preact/hooks"
+import { useState, useContext, useEffect } from "preact/hooks"
 
 import { TodoContext } from "../../../context/TodoContext"
+import { useKeyBindings } from "../../../hooks/useKeyBindings"
 
 import "./Modal.css"
 
@@ -23,7 +24,13 @@ const Modal = () => {
         handleClose()
     }
 
-    const handleDisable = value.length < 5 || value == "crumbs"
+    const handleDisable = value.length < 1 || value == "crumbs"
+
+    useKeyBindings("Escape", () => handleClose())
+
+    useEffect(() => {
+        document.getElementById("addTodo").focus()
+    })
 
     return (
         <form className="Form" onSubmit={handleSubmit}>
@@ -33,7 +40,7 @@ const Modal = () => {
                 placeholder="Add ToDo..."
                 value={value}
                 onInput={handleInput}
-                autofocus
+                id="addTodo"
             />
 
             <div className="buttonContainer">

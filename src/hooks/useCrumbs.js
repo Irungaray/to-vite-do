@@ -6,6 +6,8 @@ const useCrumbs = () => {
     const [selectedCrumb, setSelectedCrumb] = useLocalStorage("selectedCrumb", "Main")
     const [showForm, setShowForm] = useState(false)
 
+    if (selectedCrumb === undefined) setSelectedCrumb(crumbs[0])
+
     const saveCrumb = (val) => {
         setCrumbs([
             ...crumbs,

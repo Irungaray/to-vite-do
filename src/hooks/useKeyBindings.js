@@ -3,7 +3,7 @@ import { useState, useEffect } from "preact/hooks"
 const useKeyBindings = (key, cb) => {
     const { addEventListener, removeEventListener } = window
 
-    const [shiftPressed, setShiftPressed] = useState(false)
+    // const [shiftPressed, setShiftPressed] = useState(false)
 
     const handler = (e) => {
 

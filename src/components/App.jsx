@@ -11,7 +11,6 @@ const App = () => {
 
     const [ crumbs, selectedCrumb, setSelectedCrumb, saveCrumb, deleteCrumb, showForm, setShowForm ] = useCrumbs()
 
-
     return (
         <TodoProvider pointer={selectedCrumb}>
             <Breadcrumbs

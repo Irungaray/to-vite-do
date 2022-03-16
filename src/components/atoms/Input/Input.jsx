@@ -9,6 +9,8 @@ const Input = (props) => {
                 value={props.value}
                 placeholder={props.placeholder}
                 className={props.className}
+                autoFocus="true"
+                {...props}
             />
         </div>
     )

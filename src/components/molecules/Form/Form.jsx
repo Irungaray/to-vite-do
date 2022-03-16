@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks"
+import { useState, useEffect } from "preact/hooks"
 
 import { useCrumbs } from "../../../hooks/useCrumbs"
 
@@ -28,10 +28,14 @@ const Form = (props) => {
 
     const handleDisable = val.length < 1 || val == "crumbs"
 
+    useEffect(() => {
+        document.getElementById("crumbInput").focus()
+    })
+
     return (
         <>
             <form className="AddCrumbForm" onSubmit={handleSubmit}>
-                <Input onInput={handleVal} placeholder="Add crumb..." />
+                <Input onInput={handleVal} placeholder="Add crumb..." id="crumbInput" />
 
                 <Button type="submit" disabled={handleDisable} />
             </form>
